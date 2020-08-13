@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Title from 'components/atoms/Title/Title';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
@@ -19,5 +20,10 @@ const Card = ({ title, content }) => (
     <Paragraph>{content}</Paragraph>
   </StyledWrapper>
 );
+
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+};
 
 export default Card;

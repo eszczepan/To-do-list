@@ -12,10 +12,11 @@ const StyledGrid = styled.div`
 `;
 
 class Root extends Component {
-  state = Data;
+  state = {
+    Data,
+  };
 
   render() {
-    console.log(Data);
     return (
       <>
         <ThemeProvider theme={theme}>
