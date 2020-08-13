@@ -10,9 +10,11 @@ const StyledFlex = styled.div`
   margin-bottom: 2rem;
 `;
 
-const CardHeader = () => (
+const CardHeader = ({ title, tasks }) => (
   <StyledFlex>
-    <Paragraph card>Do zrobienia (3)</Paragraph>
+    <Paragraph card>
+      {title} ({tasks})
+    </Paragraph>
     <Button add>Dodaj</Button>
   </StyledFlex>
 );

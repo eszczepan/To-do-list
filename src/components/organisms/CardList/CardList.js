@@ -10,12 +10,12 @@ const StyledFlex = styled.div`
   max-width: 30rem;
 `;
 
-const CardList = () => (
+const CardList = ({ title, tasks }) => (
   <StyledFlex>
-    <CardHeader />
-    <Card />
-    <Card />
-    <Card />
+    <CardHeader title={title} tasks={tasks.length} />
+    {tasks.map((task) => (
+      <Card title={task.title} content={task.content} key={task.id} />
+    ))}
   </StyledFlex>
 );
 

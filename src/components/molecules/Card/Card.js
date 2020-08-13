@@ -13,13 +13,10 @@ const StyledWrapper = styled.div`
   padding: 1.4rem;
 `;
 
-const Card = () => (
+const Card = ({ title, content }) => (
   <StyledWrapper>
-    <Title>Poprawki dokumentów</Title>
-    <Paragraph>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nobis
-      dolores
-    </Paragraph>
+    <Title>{title}</Title>
+    <Paragraph>{content}</Paragraph>
   </StyledWrapper>
 );
 
