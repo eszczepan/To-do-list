@@ -33,14 +33,14 @@ const Data = {
       taskIDs: ['task-1', 'task-2'],
     },
     'column-2': {
-      id: '2',
+      id: 'column-2',
       title: 'W trakcie',
-      taskIDs: ['task-3'],
+      taskIDs: ['task-3', 'task-4'],
     },
     'column-3': {
-      id: '1',
+      id: 'column-3',
       title: 'Zrobione',
-      taskIDs: ['task-4'],
+      taskIDs: ['task-5'],
     },
   },
   columnOrder: ['column-1', 'column-2', 'column-3'],
