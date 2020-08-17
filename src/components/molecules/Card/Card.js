@@ -4,8 +4,11 @@ import styled from 'styled-components';
 // import { Draggable } from 'react-beautiful-dnd';
 import Title from 'components/atoms/Title/Title';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
-import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
+import Icon from 'components/atoms/Icon/Icon';
 import dragIcon from 'assets/dragIcon.svg';
+import toDoIcon from 'assets/list.svg';
+import inProgressIcon from 'assets/timer.svg';
+import doneIcon from 'assets/tick.svg';
 import removeIcon from 'assets/remove.svg';
 import { connect } from 'react-redux';
 import { removeItem } from 'actions';
@@ -32,7 +35,7 @@ const IconSidebar = styled.div`
   flex-direction: column;
 `;
 
-const StyledRemoveButton = styled(ButtonIcon)`
+const StyledRemoveButton = styled(Icon)`
   margin-top: auto;
   cursor: pointer;
 `;
@@ -42,7 +45,10 @@ const Card = ({ task, column, removeItem }) => {
     <StyledWrapper>
       <Title>{task.title}</Title>
       <IconSidebar>
-        <ButtonIcon icon={dragIcon} />
+        <Icon icon={dragIcon} />
+        {column.id === 1 && <Icon icon={toDoIcon} />}
+        {column.id === 2 && <Icon icon={inProgressIcon} />}
+        {column.id === 3 && <Icon icon={doneIcon} />}
         <StyledRemoveButton
           icon={removeIcon}
           onClick={() => removeItem(task.id, column.id)}
