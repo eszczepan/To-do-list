@@ -60,12 +60,12 @@ Card.propTypes = {
     title: PropTypes.string,
     content: PropTypes.string,
   }),
-  index: PropTypes.number.isRequired,
   column: PropTypes.PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,
     taskIds: PropTypes.arrayOf(PropTypes.number),
   }).isRequired,
+  removeItem: PropTypes.func.isRequired,
 };
 
 Card.defaultProps = {

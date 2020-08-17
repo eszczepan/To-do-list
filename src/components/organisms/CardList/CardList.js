@@ -38,22 +38,21 @@ class InnerList extends React.Component {
   }
 }
 
-const CardList = ({ title, tasks, column, form, isDropDisabled }) => (
+const CardList = ({ title, tasks, column, form }) => (
   <StyledColumn>
     <CardHeader title={title} amount={tasks.length} column={column} />
     <StyledList>
       {form.isVisible && form.column === 1 && column.id === 1 && (
-        <CardForm column={column} />
+        <CardForm columnId={column.id} />
       )}
       {form.isVisible && form.column === 2 && column.id === 2 && (
-        <CardForm column={column} />
+        <CardForm columnId={column.id} />
       )}
       {form.isVisible && form.column === 3 && column.id === 3 && (
-        <CardForm column={column} />
+        <CardForm columnId={column.id} />
       )}
 
       {tasks.map((task, index) => {
-        // console.log(task);
         return <Card key={task.id} task={task} index={index} column={column} />;
       })}
     </StyledList>
@@ -68,7 +67,10 @@ CardList.propTypes = {
     title: PropTypes.string,
     taskIds: PropTypes.arrayOf(PropTypes.number),
   }).isRequired,
-  // isDropDisabled: PropTypes.bool.isRequired,
+  form: PropTypes.shape({
+    isVisible: PropTypes.bool,
+    column: PropTypes.number,
+  }).isRequired,
 };
 
 CardList.defaultProps = {

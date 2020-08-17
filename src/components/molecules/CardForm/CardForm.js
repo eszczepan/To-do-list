@@ -23,13 +23,13 @@ const StyledForm = styled(Form)`
   flex-direction: column;
 `;
 
-const CardForm = ({ column, addItem, hideCardForm }) => {
+const CardForm = ({ columnId, addItem, hideCardForm }) => {
   return (
     <StyledWrapper>
       <Formik
         initialValues={{ title: '', content: '' }}
         onSubmit={(values) => {
-          addItem(column.id, values);
+          addItem(columnId, values);
           hideCardForm();
         }}
       >
@@ -60,6 +60,12 @@ const CardForm = ({ column, addItem, hideCardForm }) => {
       </Formik>
     </StyledWrapper>
   );
+};
+
+CardForm.propTypes = {
+  columnId: PropTypes.number.isRequired,
+  addItem: PropTypes.func.isRequired,
+  hideCardForm: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

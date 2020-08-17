@@ -45,6 +45,7 @@ CardHeader.propTypes = {
     title: PropTypes.string,
     taskIDs: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
+  showCardForm: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
