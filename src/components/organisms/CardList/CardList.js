@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Droppable } from 'react-beautiful-dnd';
+// import { Droppable } from 'react-beautiful-dnd';
 import Card from 'components/molecules/Card/Card';
 import CardHeader from 'components/molecules/CardHeader/CardHeader';
 
@@ -30,9 +30,9 @@ class InnerList extends React.Component {
   }
 
   render() {
-    const { tasks } = this.props;
+    const { tasks, column } = this.props;
     return tasks.map((task, index) => (
-      <Card key={task.id} task={task} index={index} />
+      <Card key={task.id} task={task} index={index} column={column} />
     ));
   }
 }
@@ -40,18 +40,13 @@ class InnerList extends React.Component {
 const CardList = ({ title, tasks, column, isDropDisabled }) => (
   <StyledColumn>
     <CardHeader title={title} amount={tasks.length} column={column} />
-    <Droppable droppableId={column.id} isDropDisabled={isDropDisabled}>
-      {(provided, snapshot) => (
-        <StyledList
-          ref={provided.innerRef}
-          {...provided.droppableProps}
-          isDraggingOver={snapshot.isDraggingOver}
-        >
-          <InnerList tasks={tasks} />
-          {provided.placeholder}
-        </StyledList>
-      )}
-    </Droppable>
+
+    <StyledList>
+      {tasks.map((task, index) => {
+        // console.log(task);
+        return <Card key={task.id} task={task} index={index} column={column} />;
+      })}
+    </StyledList>
   </StyledColumn>
 );
 
@@ -59,11 +54,11 @@ CardList.propTypes = {
   title: PropTypes.string.isRequired,
   tasks: PropTypes.arrayOf(PropTypes.object),
   column: PropTypes.PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.number,
     title: PropTypes.string,
-    taskIDs: PropTypes.arrayOf(PropTypes.string),
+    taskIds: PropTypes.arrayOf(PropTypes.number),
   }).isRequired,
-  isDropDisabled: PropTypes.bool.isRequired,
+  // isDropDisabled: PropTypes.bool.isRequired,
 };
 
 CardList.defaultProps = {
@@ -72,6 +67,11 @@ CardList.defaultProps = {
 
 InnerList.propTypes = {
   tasks: PropTypes.arrayOf(PropTypes.object),
+  column: PropTypes.PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    taskIds: PropTypes.arrayOf(PropTypes.number),
+  }).isRequired,
 };
 InnerList.defaultProps = {
   tasks: [],

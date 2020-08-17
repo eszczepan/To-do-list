@@ -39,7 +39,7 @@ CardHeader.propTypes = {
   title: PropTypes.string.isRequired,
   amount: PropTypes.number.isRequired,
   column: PropTypes.PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.number,
     title: PropTypes.string,
     taskIDs: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
