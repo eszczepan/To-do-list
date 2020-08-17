@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "eslint": "^6.6.0",
+    "formik": "^2.1.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-beautiful-dnd": "^13.0.0",

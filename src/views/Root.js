@@ -87,7 +87,6 @@ const Root = ({ form, tasks, columns, columnOrder }) => {
 
   //   this.setState(newState);
   // };
-
   return (
     <MainTemplate>
       <>

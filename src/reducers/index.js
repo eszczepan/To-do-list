@@ -25,9 +25,32 @@ const rootReducer = (state = data, action) => {
         ],
         columns: newColumns,
       };
-      // console.log(state);
-      // state = newState;
+
       return newState;
+
+    case 'ADD_ITEM':
+      const myColumn = state.columns[action.payload.columnId - 1];
+      let newCol = {
+        ...state.columns,
+        [action.payload.columnId - 1]: {
+          ...myColumn,
+          taskIds: [action.payload.taskId, ...myColumn.taskIds],
+        },
+      };
+
+      newCol = Object.values(newCol);
+
+      const newTask = {
+        id: action.payload.taskId,
+        title: action.payload.taskContent.title,
+        content: action.payload.taskContent.content,
+      };
+
+      return {
+        ...state,
+        tasks: [newTask, ...state.tasks],
+        columns: newCol,
+      };
 
     case 'SHOW_FORM_CARD':
       return {
@@ -37,6 +60,17 @@ const rootReducer = (state = data, action) => {
           column: action.payload.columnId,
         },
       };
+
+    case 'HIDE_FORM_CARD':
+      console.log(state);
+      return {
+        ...state,
+        form: {
+          isVisible: false,
+          column: 0,
+        },
+      };
+
     default:
       return state;
   }

@@ -42,15 +42,15 @@ const CardList = ({ title, tasks, column, form, isDropDisabled }) => (
   <StyledColumn>
     <CardHeader title={title} amount={tasks.length} column={column} />
     <StyledList>
-      {form.isVisible && form.column === 1 && column.id === 1 ? (
-        <CardForm />
-      ) : null}
-      {form.isVisible && form.column === 2 && column.id === 2 ? (
-        <CardForm />
-      ) : null}
-      {form.isVisible && form.column === 3 && column.id === 3 ? (
-        <CardForm />
-      ) : null}
+      {form.isVisible && form.column === 1 && column.id === 1 && (
+        <CardForm column={column} />
+      )}
+      {form.isVisible && form.column === 2 && column.id === 2 && (
+        <CardForm column={column} />
+      )}
+      {form.isVisible && form.column === 3 && column.id === 3 && (
+        <CardForm column={column} />
+      )}
 
       {tasks.map((task, index) => {
         // console.log(task);

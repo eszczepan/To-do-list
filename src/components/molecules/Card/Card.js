@@ -38,8 +38,6 @@ const StyledRemoveButton = styled(ButtonIcon)`
 `;
 
 const Card = ({ task, column, removeItem }) => {
-  // console.log(column.id);
-  // console.log(removeItem);
   return (
     <StyledWrapper>
       <Title>{task.title}</Title>

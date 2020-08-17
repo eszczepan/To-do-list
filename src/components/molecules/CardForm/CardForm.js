@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Formik, Form } from 'formik';
+import Input from 'components/atoms/Input/Input';
+import Button from 'components/atoms/Button/Button';
+import { connect } from 'react-redux';
+import { addItem, hideCardForm } from 'actions';
 
 const StyledWrapper = styled.div`
   background-color: ${(props) => (props.isDragging ? 'lightgreen' : 'white')};
@@ -13,11 +18,53 @@ const StyledWrapper = styled.div`
   position: relative;
 `;
 
-const CardForm = () => (
-  <StyledWrapper>
-    <input type="text" />
-    <input type="textarea" />
-  </StyledWrapper>
-);
+const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+`;
 
-export default CardForm;
+const CardForm = ({ column, addItem, hideCardForm }) => {
+  return (
+    <StyledWrapper>
+      <Formik
+        initialValues={{ title: '', content: '' }}
+        onSubmit={(values) => {
+          addItem(column.id, values);
+          hideCardForm();
+        }}
+      >
+        {({ values, handleChange, handleBlur }) => (
+          <StyledForm>
+            <Input
+              title="true"
+              placeholder="Wpisz tytuł..."
+              name="title"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.title}
+            />
+            <Input
+              description
+              placeholder="Tutaj wpisz opis..."
+              name="content"
+              as="textarea"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.content}
+            />
+            <Button submit type="submit">
+              Dodaj
+            </Button>
+          </StyledForm>
+        )}
+      </Formik>
+    </StyledWrapper>
+  );
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  addItem: (columnId, taskContent) => dispatch(addItem(columnId, taskContent)),
+  hideCardForm: () => dispatch(hideCardForm()),
+});
+
+export default connect(null, mapDispatchToProps)(CardForm);

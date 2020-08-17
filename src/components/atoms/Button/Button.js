@@ -23,6 +23,16 @@ const Button = styled.button`
       background-position: 85%;
       background-repeat: no-repeat;
     `}
+
+  ${({ submit }) =>
+    submit &&
+    css`
+      background-color: transparent;
+      color: skyblue;
+      padding: 0;
+      margin: auto 0 0 auto;
+      cursor: pointer;
+    `}
 `;
 
 export default Button;
