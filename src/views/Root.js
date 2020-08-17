@@ -12,7 +12,7 @@ const StyledWrapper = styled.div`
   padding: 0 3rem;
 `;
 
-const Root = ({ tasks, columns, columnOrder }) => {
+const Root = ({ form, tasks, columns, columnOrder }) => {
   // onDragStart = (start) => {
   //   const homeIndex = this.state.columnOrder.indexOf(start.source.droppableId);
 
@@ -112,6 +112,7 @@ const Root = ({ tasks, columns, columnOrder }) => {
                 tasks={newTasks}
                 title={column.title}
                 column={column}
+                form={form}
                 // isDropDisabled={isDropDisabled}
               />
             );
@@ -123,8 +124,8 @@ const Root = ({ tasks, columns, columnOrder }) => {
 };
 
 const mapStateToProps = (state) => {
-  const { tasks, columns, columnOrder } = state;
-  return { tasks, columns, columnOrder };
+  const { form, tasks, columns, columnOrder } = state;
+  return { form, tasks, columns, columnOrder };
 };
 
 export default connect(mapStateToProps)(Root);

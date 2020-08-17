@@ -1,4 +1,8 @@
 const data = {
+  form: {
+    isVisible: false,
+    column: 0,
+  },
   tasks: [
     {
       id: 1,

@@ -28,6 +28,15 @@ const rootReducer = (state = data, action) => {
       // console.log(state);
       // state = newState;
       return newState;
+
+    case 'SHOW_FORM_CARD':
+      return {
+        ...state,
+        form: {
+          isVisible: true,
+          column: action.payload.columnId,
+        },
+      };
     default:
       return state;
   }

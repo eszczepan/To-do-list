@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Button from 'components/atoms/Button/Button';
+import { connect } from 'react-redux';
+import { showCardForm } from 'actions';
 
 const StyledFlex = styled.div`
   display: flex;
@@ -11,16 +13,16 @@ const StyledFlex = styled.div`
   margin-bottom: 2rem;
 `;
 
-const CardHeader = ({ title, amount, column }) => {
+const CardHeader = ({ title, amount, column, showCardForm }) => {
   const handleButton = () => {
-    if (column.id === 'column-1') {
-      console.log('Button 1');
+    if (column.id === 1) {
+      showCardForm(column.id);
     }
-    if (column.id === 'column-2') {
-      console.log('Button 2');
+    if (column.id === 2) {
+      showCardForm(column.id);
     }
-    if (column.id === 'column-3') {
-      console.log('Button 3');
+    if (column.id === 3) {
+      showCardForm(column.id);
     }
   };
   return (
@@ -45,4 +47,8 @@ CardHeader.propTypes = {
   }).isRequired,
 };
 
-export default CardHeader;
+const mapDispatchToProps = (dispatch) => ({
+  showCardForm: (columnId) => dispatch(showCardForm(columnId)),
+});
+
+export default connect(null, mapDispatchToProps)(CardHeader);

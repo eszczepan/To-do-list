@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // import { Droppable } from 'react-beautiful-dnd';
 import Card from 'components/molecules/Card/Card';
+import CardForm from 'components/molecules/CardForm/CardForm';
 import CardHeader from 'components/molecules/CardHeader/CardHeader';
 
 const StyledColumn = styled.div`
@@ -37,11 +38,20 @@ class InnerList extends React.Component {
   }
 }
 
-const CardList = ({ title, tasks, column, isDropDisabled }) => (
+const CardList = ({ title, tasks, column, form, isDropDisabled }) => (
   <StyledColumn>
     <CardHeader title={title} amount={tasks.length} column={column} />
-
     <StyledList>
+      {form.isVisible && form.column === 1 && column.id === 1 ? (
+        <CardForm />
+      ) : null}
+      {form.isVisible && form.column === 2 && column.id === 2 ? (
+        <CardForm />
+      ) : null}
+      {form.isVisible && form.column === 3 && column.id === 3 ? (
+        <CardForm />
+      ) : null}
+
       {tasks.map((task, index) => {
         // console.log(task);
         return <Card key={task.id} task={task} index={index} column={column} />;

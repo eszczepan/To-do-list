@@ -7,3 +7,12 @@ export const removeItem = (taskId, columnId) => {
     },
   };
 };
+
+export const showCardForm = (columnId) => {
+  return {
+    type: 'SHOW_FORM_CARD',
+    payload: {
+      columnId,
+    },
+  };
+};
