@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import Title from 'components/atoms/Title/Title';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Icon from 'components/atoms/Icon/Icon';
-import dragIcon from 'assets/dragIcon.svg';
-import toDoIcon from 'assets/list.svg';
-import inProgressIcon from 'assets/timer.svg';
-import doneIcon from 'assets/tick.svg';
-import removeIcon from 'assets/remove.svg';
+import dragIcon from 'assets/icons/dragIcon.svg';
+import toDoIcon from 'assets/icons/list.svg';
+import inProgressIcon from 'assets/icons/timer.svg';
+import doneIcon from 'assets/icons/tick.svg';
+import removeIcon from 'assets/icons/remove.svg';
 import { connect } from 'react-redux';
 import { removeItem } from 'actions';
 

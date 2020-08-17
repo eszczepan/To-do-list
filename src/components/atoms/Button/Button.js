@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import plusIcon from 'assets/plus.svg';
+import plusIcon from 'assets/icons/plus.svg';
 
 const Button = styled.button`
   background-color: white;

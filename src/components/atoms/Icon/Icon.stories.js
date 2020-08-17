@@ -1,9 +1,9 @@
 import React from 'react';
-import dragIcon from 'assets/dragIcon.svg';
-import removeIcon from 'assets/remove.svg';
-import toDoIcon from 'assets/list.svg';
-import inProgressIcon from 'assets/timer.svg';
-import doneIcon from 'assets/tick.svg';
+import dragIcon from 'assets/icons/dragIcon.svg';
+import removeIcon from 'assets/icons/remove.svg';
+import toDoIcon from 'assets/icons/list.svg';
+import inProgressIcon from 'assets/icons/timer.svg';
+import doneIcon from 'assets/icons/tick.svg';
 import Icon from './Icon';
 
 export default {
