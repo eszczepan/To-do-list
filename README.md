@@ -1,4 +1,4 @@
-# :tada: ReasonStore
+# :tada: To-do App
 
 React Todo application.
 
