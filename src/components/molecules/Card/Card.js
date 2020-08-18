@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-// import { Draggable } from 'react-beautiful-dnd';
 import Title from 'components/atoms/Title/Title';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Icon from 'components/atoms/Icon/Icon';

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-// import { Droppable } from 'react-beautiful-dnd';
 import Card from 'components/molecules/Card/Card';
 import CardForm from 'components/molecules/CardForm/CardForm';
 import CardHeader from 'components/molecules/CardHeader/CardHeader';
