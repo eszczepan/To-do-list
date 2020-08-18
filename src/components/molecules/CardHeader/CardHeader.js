@@ -11,6 +11,14 @@ const StyledFlex = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  @media (max-width: 750px) {
+    flex-direction: column;
+    height: 6rem;
+  }
+  @media (max-width: 550px) {
+    flex-direction: row;
+    height: 100%;
+  }
 `;
 
 const CardHeader = ({ title, amount, column, showCardForm }) => {

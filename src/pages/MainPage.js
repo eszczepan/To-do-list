@@ -8,6 +8,10 @@ import Header from 'components/atoms/Header/Header';
 const StyledWrapper = styled.div`
   display: flex;
   padding: 0 3rem;
+  @media (max-width: 550px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const MainPage = ({ form, tasks, columns, columnOrder }) => {

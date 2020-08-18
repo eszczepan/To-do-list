@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import { removeItem } from 'actions';
 
 const StyledWrapper = styled.div`
-  background-color: ${(props) => (props.isDragging ? 'lightgreen' : 'white')};
+  background-color: white;
   min-height: 18rem;
   box-shadow: 0 0 10px 1px hsla(0, 0%, 0%, 0.1);
   border-radius: 10px;
@@ -37,6 +37,9 @@ const IconSidebar = styled.div`
 const StyledRemoveButton = styled(Icon)`
   margin-top: auto;
   cursor: pointer;
+  &:hover {
+    transform: scale(1.2);
+  }
 `;
 
 const Card = ({ task, column, removeItem }) => {

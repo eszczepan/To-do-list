@@ -5,20 +5,19 @@ const Input = styled.input`
   background-color: transparent;
   border: none;
   outline: none;
-
+  padding: 0.3rem;
+  width: 100%;
   ${({ title }) =>
     title &&
     css`
-      /* font-size: ${({ theme }) => theme.fontSize.xs}; */
       font-weight: ${({ theme }) => theme.bold};
       letter-spacing: 0.5px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.7rem;
     `}
 
   ${({ description }) =>
     description &&
     css`
-      /* font-size: ${({ theme }) => theme.fontSize.xs}; */
       width: 100%;
       height: 8rem;
     `}

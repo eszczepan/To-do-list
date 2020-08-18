@@ -22,15 +22,18 @@ const Button = styled.button`
       background-size: 1rem;
       background-position: 85%;
       background-repeat: no-repeat;
+      @media (max-width: 800px) {
+        padding: 0 2.5rem 0 1.5rem;
+      }
     `}
 
   ${({ submit }) =>
     submit &&
     css`
       background-color: transparent;
-      color: skyblue;
+      color: ${({ theme }) => theme.blue};
       padding: 0;
-      margin: auto 0 0 auto;
+      margin: 1rem 0 0 auto;
       cursor: pointer;
     `}
 `;

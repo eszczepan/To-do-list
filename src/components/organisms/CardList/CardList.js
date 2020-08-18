@@ -10,14 +10,20 @@ const StyledColumn = styled.div`
   flex-direction: column;
   margin: 2rem 2rem 0 0;
   width: 25rem;
+  @media (max-width: 550px) {
+    width: 35rem;
+  }
+  @media (max-width: 420px) {
+    width: 30rem;
+  }
+  @media (max-width: 350px) {
+    width: 25rem;
+  }
 `;
 
 const StyledList = styled.div`
   min-height: 10rem;
   border-radius: 10px;
-  transition: background-color 0.2s ease;
-  background-color: ${(props) =>
-    props.isDraggingOver ? 'skyblue' : 'transparent'};
 `;
 
 class InnerList extends React.Component {
