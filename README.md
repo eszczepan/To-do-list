@@ -1,4 +1,4 @@
-# :tada: To-do App
+# :tada: To-Do list
 
 React Todo application.
 
