@@ -23,7 +23,7 @@ const MainPage = ({ form, tasks, columns, columnOrder }) => {
           const newTasks = [];
           const column = columns[index];
           column.taskIds.map((taskId) =>
-            tasks.map((task) => {
+            tasks.forEach((task) => {
               if (taskId === task.id) {
                 return newTasks.push(task);
               }

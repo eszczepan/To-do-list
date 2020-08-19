@@ -8,6 +8,8 @@
     "document": true
   },
   "rules": {
+    "import/no-named-as-default": 0,
+    "import/no-named-as-default-member": 0,
     "no-shadow": 0,
     "array-callback-return": 0,
     "consistent-return": 0,
@@ -15,9 +17,12 @@
     "no-underscore-dangle": 0,
     "react/jsx-props-no-spreading": 0,
     "import/prefer-default-export": 0,
-    "react/jsx-filename-extension": [1, {
-      "extensions": [".js"]
-    }]
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js"]
+      }
+    ]
   },
   "settings": {
     "import/resolver": {

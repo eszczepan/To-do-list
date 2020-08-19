@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Card from 'components/molecules/Card/Card';
-import CardForm from 'components/molecules/CardForm/CardForm';
 import CardHeader from 'components/molecules/CardHeader/CardHeader';
+import CardForm from 'components/molecules/CardForm/CardForm';
 
 const StyledColumn = styled.div`
   display: flex;
