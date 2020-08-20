@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Droppable } from 'react-beautiful-dnd';
 import Card from 'components/molecules/Card/Card';
 import CardHeader from 'components/molecules/CardHeader/CardHeader';
 import CardForm from 'components/molecules/CardForm/CardForm';
@@ -44,24 +45,37 @@ class InnerList extends React.Component {
 }
 
 const CardList = ({ title, tasks, column, form }) => (
-  <StyledColumn>
-    <CardHeader title={title} amount={tasks.length} column={column} />
-    <StyledList>
-      {form.isVisible && form.column === 1 && column.id === 1 && (
-        <CardForm columnId={column.id} />
-      )}
-      {form.isVisible && form.column === 2 && column.id === 2 && (
-        <CardForm columnId={column.id} />
-      )}
-      {form.isVisible && form.column === 3 && column.id === 3 && (
-        <CardForm columnId={column.id} />
-      )}
+  <Droppable droppableId={String(column.id)}>
+    {(provided) => (
+      <StyledColumn {...provided.droppableProps} ref={provided.innerRef}>
+        <CardHeader title={title} amount={tasks.length} column={column} />
+        <StyledList>
+          {form.isVisible && form.column === 1 && column.id === 1 && (
+            <CardForm columnId={column.id} />
+          )}
+          {form.isVisible && form.column === 2 && column.id === 2 && (
+            <CardForm columnId={column.id} />
+          )}
+          {form.isVisible && form.column === 3 && column.id === 3 && (
+            <CardForm columnId={column.id} />
+          )}
 
-      {tasks.map((task, index) => {
-        return <Card key={task.id} task={task} index={index} column={column} />;
-      })}
-    </StyledList>
-  </StyledColumn>
+          {tasks.map((task, index) => {
+            return (
+              <Card
+                key={task.id}
+                task={task}
+                index={index}
+                column={column}
+                id={task.id}
+              />
+            );
+          })}
+        </StyledList>
+        {provided.placeholder}
+      </StyledColumn>
+    )}
+  </Droppable>
 );
 
 CardList.propTypes = {

@@ -34,3 +34,22 @@ export const hideCardForm = () => {
     type: 'HIDE_FORM_CARD',
   };
 };
+
+export const sort = (
+  droppableIdStart,
+  droppableIdEnd,
+  droppableIndexStart,
+  droppableIndexEnd,
+  draggableId,
+) => {
+  return {
+    type: 'DRAG',
+    payload: {
+      droppableIdStart,
+      droppableIdEnd,
+      droppableIndexStart,
+      droppableIndexEnd,
+      draggableId,
+    },
+  };
+};

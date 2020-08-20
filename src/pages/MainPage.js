@@ -1,9 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { DragDropContext } from 'react-beautiful-dnd';
 import CardList from 'components/organisms/CardList/CardList';
 import Header from 'components/atoms/Header/Header';
+import { sort } from 'actions';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -14,54 +15,60 @@ const StyledWrapper = styled.div`
   }
 `;
 
-const MainPage = ({ form, tasks, columns, columnOrder }) => {
+const MainPage = (state) => {
+  const { form, tasks, columns, columnOrder } = state;
+  const onDragEnd = (result) => {
+    const { destination, source, draggableId } = result;
+
+    if (!destination) {
+      return;
+    }
+
+    state.dispatch(
+      sort(
+        source.droppableId,
+        destination.droppableId,
+        source.index,
+        destination.index,
+        draggableId,
+      ),
+    );
+  };
+
   return (
     <>
-      <Header />
-      <StyledWrapper>
-        {columnOrder.map((item, index) => {
-          const newTasks = [];
-          const column = columns[index];
-          column.taskIds.map((taskId) =>
-            tasks.forEach((task) => {
-              if (taskId === task.id) {
-                return newTasks.push(task);
-              }
-            }),
-          );
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Header />
+        <StyledWrapper>
+          {columnOrder.map((item, index) => {
+            const newTasks = [];
+            const column = columns[index];
+            column.taskIds.map((taskId) =>
+              tasks.forEach((task) => {
+                if (taskId === task.id) {
+                  return newTasks.push(task);
+                }
+              }),
+            );
 
-          return (
-            <CardList
-              key={column.id}
-              tasks={newTasks}
-              title={column.title}
-              column={column}
-              form={form}
-            />
-          );
-        })}
-      </StyledWrapper>
+            return (
+              <CardList
+                key={column.id}
+                tasks={newTasks}
+                title={column.title}
+                column={column}
+                form={form}
+              />
+            );
+          })}
+        </StyledWrapper>
+      </DragDropContext>
     </>
   );
 };
 
-MainPage.propTypes = {
-  form: PropTypes.shape({
-    isVisible: PropTypes.bool,
-    column: PropTypes.number,
-  }).isRequired,
-  tasks: PropTypes.arrayOf(PropTypes.object),
-  columns: PropTypes.arrayOf(PropTypes.object).isRequired,
-  columnOrder: PropTypes.arrayOf(PropTypes.number).isRequired,
-};
-
-MainPage.defaultProps = {
-  tasks: [],
-};
-
 const mapStateToProps = (state) => {
-  const { form, tasks, columns, columnOrder } = state;
-  return { form, tasks, columns, columnOrder };
+  return state;
 };
 
 export default connect(mapStateToProps)(MainPage);

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Draggable } from 'react-beautiful-dnd';
 import Title from 'components/atoms/Title/Title';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Icon from 'components/atoms/Icon/Icon';
@@ -42,23 +43,27 @@ const StyledRemoveButton = styled(Icon)`
   }
 `;
 
-const Card = ({ task, column, removeItem }) => {
+const Card = ({ task, column, removeItem, id, index }) => {
   return (
-    <StyledWrapper>
-      <Title>{task.title}</Title>
-      <IconSidebar>
-        <Icon icon={dragIcon} />
-        {column.id === 1 && <Icon icon={toDoIcon} />}
-        {column.id === 2 && <Icon icon={inProgressIcon} />}
-        {column.id === 3 && <Icon icon={doneIcon} />}
-        <StyledRemoveButton
-          icon={removeIcon}
-          onClick={() => removeItem(task.id, column.id)}
-        />
-      </IconSidebar>
+    <Draggable draggableId={String(id)} index={index}>
+      {(provided) => (
+        <StyledWrapper {...provided.draggableProps} ref={provided.innerRef}>
+          <Title>{task.title}</Title>
+          <IconSidebar>
+            <Icon icon={dragIcon} {...provided.dragHandleProps} />
+            {column.id === 1 && <Icon icon={toDoIcon} />}
+            {column.id === 2 && <Icon icon={inProgressIcon} />}
+            {column.id === 3 && <Icon icon={doneIcon} />}
+            <StyledRemoveButton
+              icon={removeIcon}
+              onClick={() => removeItem(task.id, column.id)}
+            />
+          </IconSidebar>
 
-      <Paragraph>{task.content}</Paragraph>
-    </StyledWrapper>
+          <Paragraph>{task.content}</Paragraph>
+        </StyledWrapper>
+      )}
+    </Draggable>
   );
 };
 
@@ -74,6 +79,8 @@ Card.propTypes = {
     taskIds: PropTypes.arrayOf(PropTypes.number),
   }).isRequired,
   removeItem: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 Card.defaultProps = {
