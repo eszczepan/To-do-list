@@ -45,11 +45,11 @@ class InnerList extends React.Component {
 }
 
 const CardList = ({ title, tasks, column, form }) => (
-  <Droppable droppableId={String(column.id)}>
-    {(provided) => (
-      <StyledColumn {...provided.droppableProps} ref={provided.innerRef}>
-        <CardHeader title={title} amount={tasks.length} column={column} />
-        <StyledList>
+  <StyledColumn>
+    <CardHeader title={title} amount={tasks.length} column={column} />
+    <Droppable droppableId={String(column.id)}>
+      {(provided) => (
+        <StyledList {...provided.droppableProps} ref={provided.innerRef}>
           {form.isVisible && form.column === 1 && column.id === 1 && (
             <CardForm columnId={column.id} />
           )}
@@ -71,11 +71,11 @@ const CardList = ({ title, tasks, column, form }) => (
               />
             );
           })}
+          {provided.placeholder}
         </StyledList>
-        {provided.placeholder}
-      </StyledColumn>
-    )}
-  </Droppable>
+      )}
+    </Droppable>
+  </StyledColumn>
 );
 
 CardList.propTypes = {
