@@ -10,10 +10,10 @@ React Todo application.
 * Task can be added to the list for each of the three states (to-do / in progress / done)
 * After clicking add button, the task element appears on the screen, where you can enter the title and description of the task
 * The task must have at least a title - adding without a title is not possible and the user is informed about it
+* The ability to move tasks between states (Drag and Drop)
 
 **Unfinished functionalities:**
 * Saving tasks after exiting the web browser
-* The ability to move tasks between states (Drag and Drop)
 
 ## :wrench: Tools
 
