@@ -1,6 +1,6 @@
 # :tada: To-Do list
 
-React Todo application.
+React Drag and Drop To-do application.
 
 <img src="src/assets/images/todo.png">
 
