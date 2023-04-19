@@ -1,6 +1,6 @@
-# :tada: To-Do list
+## Kanban fun
 
-React Drag and Drop To-do application.
+This is try out of the drag and drop mechanism in react.
 
 <img src="src/assets/images/todo.png">
 
